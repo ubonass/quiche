@@ -35,7 +35,7 @@ QuicSocketAddress LookupAddress(int address_family_for_lookup, std::string host,
   int result = getaddrinfo(host.c_str(), port.c_str(), &hint, &info_list);
   if (result != 0) {
     QUIC_LOG(ERROR) << "Failed to look up " << host << ": "
-                    << gai_strerror(result);
+                    << /*gai_strerror(*/result/*)*/;
     return QuicSocketAddress();
   }
 

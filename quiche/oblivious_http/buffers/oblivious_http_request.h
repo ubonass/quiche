@@ -115,7 +115,7 @@ class QUICHE_EXPORT ObliviousHttpRequest {
       absl::string_view seed, absl::string_view request_label);
 
   // This field will be empty after calling `ReleaseContext()`.
-  std::optional<Context> oblivious_http_request_context_;
+  absl::optional<Context> oblivious_http_request_context_;
   ObliviousHttpHeaderKeyConfig key_config_;
   std::string request_ciphertext_;
   std::string request_plaintext_;

@@ -783,7 +783,7 @@ size_t BalsaHeaders::RemoveValue(absl::string_view key,
     char* insertion = value_begin;
     while (values.size() >= needle.size()) {
       // Strip leading whitespace.
-      ssize_t cur_leading_whitespace = RemoveLeadingWhitespace(&values);
+      size_t cur_leading_whitespace = RemoveLeadingWhitespace(&values);
 
       // See if we've got a match (at least as a prefix).
       bool found = absl::StartsWith(values, needle);

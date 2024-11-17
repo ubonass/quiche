@@ -318,7 +318,7 @@ bool HeaderValidator::ValidateAndSetAuthority(absl::string_view authority) {
   if (!authority.empty()) {
     pseudo_header_state_[STATE_AUTHORITY_IS_NONEMPTY] = true;
     if (authority_.empty()) {
-      authority_ = authority;
+      authority_ = std::string(authority.data(), authority.length());
     } else {
       absl::StrAppend(&authority_, ", ", authority);
     }
