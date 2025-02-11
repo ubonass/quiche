@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium Authors. All rights reserved.
+﻿// Copyright 2019 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -173,7 +173,8 @@ class QUIC_NO_EXPORT MasqueClientSession : public QuicSpdyClientSession,
   // proxy. Separated with colons and semicolons.
   // For example: "name1:value1;name2:value2".
   void set_additional_headers(absl::string_view additional_headers) {
-    additional_headers_ = additional_headers;
+    additional_headers_ =
+        std::string(additional_headers.data(), additional_headers.size());
   }
 
   // Send a GET request to the MASQUE proxy itself.

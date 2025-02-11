@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium Authors. All rights reserved.
+﻿// Copyright 2019 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -729,9 +729,11 @@ void MasqueClientSession::EnableConcealedAuth(absl::string_view key_id,
                   static_cast<size_t>(ED25519_PRIVATE_KEY_LEN));
   QUICHE_CHECK_EQ(public_key.size(),
                   static_cast<size_t>(ED25519_PUBLIC_KEY_LEN));
-  concealed_auth_key_id_ = key_id;
-  concealed_auth_private_key_ = private_key;
-  concealed_auth_public_key_ = public_key;
+  concealed_auth_key_id_ = std::string(key_id.data(), key_id.size());
+  concealed_auth_private_key_ =
+      std::string(private_key.data(), private_key.size());
+  concealed_auth_public_key_ =
+      std::string(public_key.data(), public_key.size());
 }
 
 QuicSpdyClientStream* MasqueClientSession::SendGetRequest(
